@@ -1,38 +1,23 @@
 {{>partials/header}}
 
-Opa {{name}} {{lastName}}, tudo bem?
-{{#showOld}}
-    Como vai a vida?
-{{/showOld}}
-{{^showOld}}
-    Beleza?
-{{/showOld}}
+<fieldset>
+    <legend>Adicionar novo Usuário</legend>
+    <form method="POST" action="/novo-usuario">
+        <input type="text" name="firstName" placeholder="Digite seu Nome"><br />
+        <input type="text" name="lastName" placeholder="Digite seu Sobrenome"><br />
+        <input type="email" name="email" placeholder="Digite seu E-mail"><br />
+        <input type="number" name="age" placeholder="Digite sua Idade"><br />
+        <input type="text" name="interests" placeholder="Digite seus Interesses separados por vírgula"><br />
+        <input type="submit" value="Inserir">
+    </form>
+</fieldset>
 
-<hr/>
-<h2>Produtos</h2>
+<hr />
+<h2>Usuários</h2>
 <ul>
-    {{#products}}
-        {{>partials/productItem}}
-    {{/products}}
-</ul>
-
-<hr/>
-<h2>Produtos a partir de R$ 12</h2>
-<ul>
-    {{#expensives}}
-        {{>partials/productItem}}
-    {{/expensives}}
-</ul>
-
-<hr/>
-
-<ul>
-    {{#frasesDoDia}}
-        <li>{{.}}</li>
-    {{/frasesDoDia}}
-    {{^frasesDoDia}}
-        Não há frases motivacionais hoje.
-    {{/frasesDoDia}}
+    {{#users}}
+    <li>{{name.firstName}} - {{age}} anos <a href="/usuario/{{_id}}/addidade">+1 ano de vida</a></li>
+    {{/users}}
 </ul>
 
 {{>partials/footer}}
